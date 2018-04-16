@@ -95,6 +95,7 @@ if (location.hostname.match(/localhost|127\.0\.0|0.0.0.0/)) {
 function sendMessage(message) {
   console.log('Client sending message: ', message);
   socket.emit('message', message);
+  console.log("room is:" + room);
 }
 
 /**

@@ -25,10 +25,12 @@ io.sockets.on('connection', function(socket) {
     socket.emit('log', array);
   }
 
-  socket.on('message', function(message) {
-    log('Client said: ', message);
+  socket.on('message', function(obj) {
+    log('Client from room: '+ obj.room + ' said: ', obj.message);
     // for a real app, would be room-only (not broadcast)
-    socket.broadcast.emit('message', message);
+    socket.broadcast.emit('message', obj.message);
+    //socket.join(obj.room).emit('message', obj.message);
+    //socket.
   });
 
   socket.on('create or join', function(room) {
